@@ -1,4 +1,4 @@
-basicl
+Basicl
 ======
 
-Basic algorithms and utilities for common lisp
+Utilities for Common Lisp
