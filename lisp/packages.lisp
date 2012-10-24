@@ -13,3 +13,9 @@
 	   #:ensure-list
 	   #:map-n
 	   #:filter))
+
+(defpackage #:breakds.basicl.exfun
+  (:nicknames #:exfun)
+  (:use #:cl)
+  (:export #:compose
+	   #:memoize))
