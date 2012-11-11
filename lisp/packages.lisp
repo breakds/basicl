@@ -19,3 +19,8 @@
   (:use #:cl)
   (:export #:compose
 	   #:memoize))
+
+(defpackage #:breakds.basicl.exmac
+  (:nicknames #:exmac)
+  (:use #:cl)
+  (:export #:with-gensyms))
