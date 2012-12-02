@@ -11,5 +11,6 @@
     :components ((:file "lisp/packages")
 		 (:file "lisp/utils/exio")
 		 (:file "lisp/utils/exlist")
-                 (:file "lisp/utils/exfun")))
+                 (:file "lisp/utils/exfun")
+                 (:file "lisp/utils/exmac")))
 
