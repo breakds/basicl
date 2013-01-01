@@ -12,5 +12,6 @@
 		 (:file "lisp/utils/exio")
 		 (:file "lisp/utils/exlist")
                  (:file "lisp/utils/exfun")
-                 (:file "lisp/utils/exmac")))
+                 (:file "lisp/utils/exmac")
+                 (:file "lisp/utils/excont")))
 

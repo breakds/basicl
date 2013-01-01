@@ -24,3 +24,15 @@
   (:nicknames #:exmac)
   (:use #:cl)
   (:export #:with-gensyms))
+
+(defpackage #:breakds.basicl.excont
+  (:nicknames #:excont)
+  (:use #:cl)
+  (:export #:*cont*
+	   #:=lambda
+	   #:=defun
+	   #:=bind
+	   #:=values
+	   #:=funcall
+	   #:=apply))
+
