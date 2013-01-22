@@ -12,7 +12,9 @@
   (:export #:singlep
 	   #:ensure-list
 	   #:map-n
-	   #:filter))
+	   #:filter
+           #:group
+           #:flatten))
 
 (defpackage #:breakds.basicl.exfun
   (:nicknames #:exfun)
@@ -23,7 +25,9 @@
 (defpackage #:breakds.basicl.exmac
   (:nicknames #:exmac)
   (:use #:cl)
-  (:export #:with-gensyms))
+  (:export #:with-gensyms
+           #:mkstr
+           #:symb))
 
 (defpackage #:breakds.basicl.excont
   (:nicknames #:excont)

@@ -31,6 +31,27 @@
      collect ele))
 		 
 		 
+(defun group (lst n)
+  "group elements of a list into n-sized sub-lists"
+  (if (zerop n) 
+      (error "group size is zero.")
+      (labels ((rec (rest accu)
+                 (if (null rest)
+                     (nreverse accu)
+                     (rec (nthcdr n rest)
+                          (cons (subseq rest 0 n)
+                                accu)))))
+        (rec lst nil))))
+
+(defun flatten (lst)
+  (labels ((rec (l accu)
+             (cond ((null l) accu)
+                   ((atom l) (cons l accu))
+                   (t (rec (car l) 
+                           (rec (cdr l) accu))))))
+    (rec lst nil)))
+                           
+
   
 
 
