@@ -31,4 +31,15 @@
               ,(funcall (get-macro-character #\`)
                         stream nil))))
 
+
+;; macro for speed/safety trade-off
+(set-dispatch-macro-character
+ #\# #\f (lambda (stream sub-char number)
+           (declare (ignorable stream sub-char))
+           (setq number (or number 3))
+           (unless (<= number 3)
+             (error "bad value for #f: ~a" number))
+           `(declare (optimize (speed ,number)
+                               (safety ,(- 3 number))))))
+
     
