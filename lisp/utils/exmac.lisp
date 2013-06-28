@@ -18,4 +18,17 @@
 (defun symb (&rest args)
   "convert arguments into a symbol"
   (values (intern (apply #'mkstr args))))
+
+
+;; anarphoric lambda. Reader macro sharp-backquote, used to define a
+;; lambda function inline.  (from let-over-lambda)
+(set-dispatch-macro-character 
+ #\# #\` (lambda (stream sub-char numarg)
+           (declare (ignorable sub-char))
+           (unless numarg (setf numarg 1))
+           `(lambda ,(loop for i from 1 to numarg
+                        collect (symb 'x i))
+              ,(funcall (get-macro-character #\`)
+                        stream nil))))
+
     
