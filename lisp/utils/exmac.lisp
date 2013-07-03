@@ -42,4 +42,15 @@
            `(declare (optimize (speed ,number)
                                (safety ,(- 3 number))))))
 
+(defmacro aif (predicate then &optional else)
+  `(let ((it ,predicate))
+     (if it
+         ,then
+         ,else)))
+
+(defmacro awhen (predicate &body body)
+  `(let ((it ,predicate))
+     (when it
+       ,@body)))
+
     

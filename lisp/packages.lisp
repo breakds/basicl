@@ -27,7 +27,10 @@
   (:use #:cl)
   (:export #:with-gensyms
            #:mkstr
-           #:symb))
+           #:symb
+           #:aif
+           #:awhen
+           #:it))
 
 
 (defpackage #:breakds.basicl.excont
