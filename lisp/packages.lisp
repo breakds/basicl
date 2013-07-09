@@ -30,7 +30,9 @@
            #:symb
            #:aif
            #:awhen
-           #:it))
+           #:it
+           #:self
+           #:alambda))
 
 
 (defpackage #:breakds.basicl.excont

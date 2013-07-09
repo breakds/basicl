@@ -53,4 +53,9 @@
      (when it
        ,@body)))
 
+(defmacro alambda (args &body body)
+  `(labels ((self ,args
+              ,@body))
+     #'self))
+
     
