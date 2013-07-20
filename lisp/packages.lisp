@@ -32,7 +32,9 @@
            #:awhen
            #:it
            #:self
-           #:alambda))
+           #:alambda
+           #:alet
+           #:this))
 
 
 (defpackage #:breakds.basicl.excont

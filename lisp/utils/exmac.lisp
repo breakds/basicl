@@ -58,4 +58,13 @@
               ,@body))
      #'self))
 
+(defmacro alet (letargs &body body)
+  (with-gensyms (args)
+    `(let ((this) ,@letargs)
+       (setq this ,@(last body))
+       ,@(butlast body)
+       (lambda (&rest ,args)
+         (apply this ,args)))))
+
+
     
