@@ -67,4 +67,18 @@
          (apply this ,args)))))
 
 
-    
+(defmacro map-cartesian (fun &rest lists)
+  (labels ((reduce-iter (x-vars y-var remain)
+             (with-gensyms (x y)
+               `(reduce (lambda (,y ,x)
+                          ,(case (length remain)
+                                 (1 `(cons (funcall ,fun
+                                                    ,@(reverse x-vars)
+                                                    ,x)
+                                           ,y))
+                                 (t (reduce-iter (cons x x-vars)
+                                                 y
+                                                 (cdr remain)))))
+                        ,(car remain)
+                        :initial-value ,y-var))))
+    (reduce-iter nil nil lists)))

@@ -27,6 +27,7 @@
   (:use #:cl)
   (:export #:with-gensyms
            #:mkstr
+           #:map-cartesian
            #:symb
            #:aif
            #:awhen
