@@ -4,10 +4,16 @@
 (defpackage #:breakds.basicl.swiss-knife
   (:nicknames #:swiss-knife #:basicl.swiss-knife)
   (:use #:cl)
-  (:export #:ensure-list))
+  (:export #:ensure-list
+	   #:map-n
+	   #:group
+	   #:flatten))
 
 (defpackage #:breakds.basicl.swiss-knife-test
-  (:nicknames #:siwss-knife-test
-              #:basicl.siwss-knife-test)
-  (:use #:cl #:breakds.basicl.siwss.knife)
-  (:export #:list-test))
+  (:nicknames #:swiss-knife-test
+	      #:basicl.swiss-knife-test)
+  (:use #:cl #:stefil #:breakds.basicl.swiss-knife)
+  (:export #:test-all
+	   #:list-test))
+
+

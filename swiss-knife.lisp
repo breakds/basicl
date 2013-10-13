@@ -26,9 +26,11 @@ contain less than N elements."
   (labels ((rec (rest accu)
              (if (null rest)
                  (nreverse accu)
-                 (rec (nthcdr n rest)
-                      (cons (subseq rest 0 n)
-                            accu)))))
+		 (if (nthcdr n rest)
+		     (rec (nthcdr n rest)
+			  (cons (subseq rest 0 n)
+				accu))
+		     (nreverse (cons rest accu))))))
     (rec lst nil)))
 
 (defun flatten (lst)
@@ -40,7 +42,7 @@ contain less than N elements."
                    (rec (rest lst)
                         (or (and (listp x)
                                  (rec x accu))
-                            x))))))
+                            (cons x accu)))))))
     (nreverse (rec lst nil))))
                    
           

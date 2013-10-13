@@ -8,8 +8,11 @@
     :author "BreakDS <breakds@gmail.com>"
     :license "Public Domain"
     :serial t
+    :depends-on (#:stefil)
     :components ((:file "packages")
-                 (:file "swiss-knife")))
+                 (:file "swiss-knife")
+		 (:file "swiss-knife-test")))
+
                         
 
 
