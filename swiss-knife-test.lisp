@@ -65,5 +65,17 @@
 	       `(let ((,x 1)
 		      (,y 2))
 		  (+ ,x ,y))))))
+
+(deftest (symb-test
+          :cases (('ab 'a 'b)
+                  ('|aB| "a" 'b)
+                  ('ab "A" 'b)
+                  ('|(1 2 3)| '(1 2 3))
+                  ('|aB| #\a #\B)
+                  ('|symbolANDSymbol| "symbol" 'and "Symbol")))
+    (expected &rest args)
+  (is (equal expected (apply #'symb args))))
+  
+
     
   

@@ -49,7 +49,7 @@ contain less than N elements."
 
 ;;; ---- Macro Candies
 
-(defmacro with-gensym (var-list &body body)
+(defmacro with-gensyms (var-list &body body)
   "bind (gensym) to the variables in VAR-LIST in BODY"
   `(let ,(mapcar (lambda (x) `(,x (gensym)))
 		 var-list)

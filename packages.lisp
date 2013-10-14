@@ -9,7 +9,9 @@
 	   #:group
 	   #:flatten
 	   ;; ----
-	   #:with-gensyms))
+	   #:with-gensyms
+           #:mkstr
+           #:symb))
 
 (defpackage #:breakds.basicl.swiss-knife-test
   (:nicknames #:swiss-knife-test
