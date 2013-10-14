@@ -51,5 +51,19 @@
 		  
 		    
 		    
+;;; ---- Macro Candies Test
+(defsuite* (macro-test :in test-all
+		       :documentation "test for macro candies"))
+
+(deftest with-gensyms-test ()
+  (is (equal (macroexpand-1 '(with-gensyms (x y)
+			      `(let ((,x 1)
+				     (,y 2))
+				 (+ ,x ,y))))
+	     '(let ((x (gensym))
+		    (y (gensym)))
+	       `(let ((,x 1)
+		      (,y 2))
+		  (+ ,x ,y))))))
     
   

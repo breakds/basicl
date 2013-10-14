@@ -7,7 +7,9 @@
   (:export #:ensure-list
 	   #:map-n
 	   #:group
-	   #:flatten))
+	   #:flatten
+	   ;; ----
+	   #:with-gensyms))
 
 (defpackage #:breakds.basicl.swiss-knife-test
   (:nicknames #:swiss-knife-test

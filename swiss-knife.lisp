@@ -45,8 +45,26 @@ contain less than N elements."
                             (cons x accu)))))))
     (nreverse (rec lst nil))))
                    
-          
-          
+
+
+;;; ---- Macro Candies
+
+(defmacro with-gensym (var-list &body body)
+  "bind (gensym) to the variables in VAR-LIST in BODY"
+  `(let ,(mapcar (lambda (x) `(,x (gensym)))
+		 var-list)
+     ,@body))
+
+(defun mkstr (&rest args)
+  "concatenate arguments into a string"
+  (with-output-to-string (s)
+    (dolist (a args) (princ a s))))
+
+(defun symb (&rest args)
+  "convert arguments into a symbol"
+  (values (intern (apply #'mkstr args))))
+
+
           
 
 
