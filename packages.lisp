@@ -11,7 +11,11 @@
 	   ;; ----
 	   #:with-gensyms
            #:mkstr
-           #:symb))
+           #:symb
+           #:aif
+           #:it
+           #:alambda
+           #:self))
 
 (defpackage #:breakds.basicl.swiss-knife-test
   (:nicknames #:swiss-knife-test

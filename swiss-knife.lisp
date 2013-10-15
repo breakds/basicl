@@ -44,7 +44,6 @@ contain less than N elements."
                                  (rec x accu))
                             (cons x accu)))))))
     (nreverse (rec lst nil))))
-                   
 
 
 ;;; ---- Macro Candies
@@ -63,6 +62,40 @@ contain less than N elements."
 (defun symb (&rest args)
   "convert arguments into a symbol"
   (values (intern (apply #'mkstr args))))
+
+(defmacro aif (predicate then &optional else)
+  "equivalent to special form if, except that PREDICATE is evaluated
+once and stored in a local variable called IT"
+  `(let ((it ,predicate))
+     (if it
+         ,then
+         ,else)))
+
+(defmacro alambda (args &body body)
+  "equivalent to special form/function lambda, except that SELF is
+used to denote the lambda itself"
+  `(labels ((self ,args
+              ,@body))
+     #'self))
+
+
+;;; ---- Dispatching Macros (Reader Macros)
+
+(set-dispatch-macro-character
+ #\# #\` (lambda (stream sub-char numarg)
+           (declare (ignorable sub-char))
+           (unless numarg (setf numarg 1))
+           `(lambda ,(loop for i from 1 to numarg
+                        collect (symb 'x i))
+              ,(funcall (get-macro-character #\`)
+                        stream nil))))
+                    
+                   
+
+
+
+
+
 
 
           

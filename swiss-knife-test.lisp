@@ -75,6 +75,24 @@
                   ('|symbolANDSymbol| "symbol" 'and "Symbol")))
     (expected &rest args)
   (is (equal expected (apply #'symb args))))
+
+(deftest aif-test ()
+  (is (null (aif (car nil) it)))
+  (is (eq (aif (car '(a b c)) it) 'a)))
+
+;;; ---- Dispatching Macros Tests
+(defsuite* (reader-macro-tests :in test-all
+                               :documentation "tests for reader macros"))
+
+(deftest anonymous-function-test ()
+  (is (equal (funcall #`(* ,x1 ,x1) 4)
+             '(* 4 4)))
+  (is (equal (funcall #`,(* x1 x1) 4)
+             16))
+  (is (equal (funcall #2`(:a1 ,x1 :a2 ,x2)
+                      15 'c)
+             '(:a1 15 :a2 c))))
+    
   
 
     
