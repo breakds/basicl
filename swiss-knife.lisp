@@ -71,12 +71,28 @@ once and stored in a local variable called IT"
          ,then
          ,else)))
 
+
+;; one place that alambda is usually found useful is when you want to
+;; define an anonymous recursive function.
 (defmacro alambda (args &body body)
   "equivalent to special form/function lambda, except that SELF is
 used to denote the lambda itself"
   `(labels ((self ,args
               ,@body))
      #'self))
+
+
+;; alet is the superstar macro from the book "LET OVER LAMBDA", where
+;; Doug uses it a lot to create powerful closures. What it does is
+;; define a closure with THIS pointed to the function delegating the
+;; closure itself.
+(defmacro alet (letargs &body body)
+  (with-gensyms (args)
+    `(let ((this) ,@letargs)
+       (setq this ,@(last body))
+       ,@(butlast body)
+       (lambda (&rest ,args)
+         (apply this ,args)))))
 
 
 ;;; ---- Dispatching Macros (Reader Macros)

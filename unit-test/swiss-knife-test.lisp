@@ -80,6 +80,30 @@
   (is (null (aif (car nil) it)))
   (is (eq (aif (car '(a b c)) it) 'a)))
 
+;; The counter-test defines a counter that can be toggled to count
+;; upward/downward. The counter is built on top of alambda and alet
+;; and can be used to test both macros. It is an example from the book
+;; "LET OVER LAMBDA".
+(deftest counter-test ()
+  (let ((counter (alet ((val 100))
+                       (alambda (x)
+                         (if (eq x :invert)
+                             (setq this 
+                                   (lambda (x)
+                                     (if (eq x :invert)
+                                         (setq this self)
+                                         (decf val x))))
+                             (incf val x))))))
+    (is (= (funcall counter 12) 112))
+    (is (= (funcall counter 1) 113))
+    (funcall counter :invert)
+    (is (= (funcall counter 1) 112))
+    (is (= (funcall counter 100) 12))))
+                         
+                       
+                       
+                       
+
 ;;; ---- Dispatching Macros Tests
 (defsuite* (reader-macro-tests :in test-all
                                :documentation "tests for reader macros"))

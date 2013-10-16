@@ -15,7 +15,11 @@
            #:aif
            #:it
            #:alambda
-           #:self))
+           #:self
+           #:alet
+           #:this))
+
+;;; --- Unit Test Packages
 
 (defpackage #:breakds.basicl.swiss-knife-test
   (:nicknames #:swiss-knife-test

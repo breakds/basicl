@@ -11,7 +11,7 @@
     :depends-on (#:stefil)
     :components ((:file "packages")
                  (:file "swiss-knife")
-		 (:file "swiss-knife-test")))
+		 (:file "unit-test/swiss-knife-test")))
 
                         
 
