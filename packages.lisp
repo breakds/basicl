@@ -19,6 +19,11 @@
            #:alet
            #:this))
 
+(defpackage #:breakds.basicl.katana
+  (:nicknames #:katana #:basicl.katana)
+  (:use #:cl #:breakds.basicl.swiss-knife)
+  (:export #:force))
+
 ;;; --- Unit Test Packages
 
 (defpackage #:breakds.basicl.swiss-knife-test

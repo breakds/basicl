@@ -1,7 +1,8 @@
 ;;;; swiss-knife.lisp
 ;;;; 
 ;;;; The most light-weighted package in basicl. Provides foundations
-;;;; for creating useful macro and function utilities.
+;;;; for creating useful macro and function utilities that are usually
+;;;; serve as building blocks for higher-level features.
 ;;;; 
 ;;;; Author: BreakDS <breakds@gmail.com>
 

@@ -11,6 +11,7 @@
     :depends-on (#:stefil)
     :components ((:file "packages")
                  (:file "swiss-knife")
+                 (:file "katana")
 		 (:file "unit-test/swiss-knife-test")))
 
                         
