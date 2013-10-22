@@ -12,7 +12,8 @@
     :components ((:file "packages")
                  (:file "swiss-knife")
                  (:file "katana")
-		 (:file "unit-test/swiss-knife-test")))
+		 (:file "unit-test/swiss-knife-test")
+		 (:file "unit-test/katana-test")))
 
                         
 

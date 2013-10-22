@@ -31,6 +31,22 @@
                                 this (lambda () ,result))
                           ,result)))
                    (error "Invalid number argument for #l (should be 1 or nil)")))))
+
+;;;; ---- Lazy Sequence Shortcuts
+
+(defun car$ (x)
+  (car (force x)))
+
+(defun cdr$ (x)
+  (cdr (force x)))
+
+(defun mapcar$ (fun &rest args)
+  #1l(cons (apply fun (mapcar #'car$ args))
+           (apply #'mapcar$ fun (mapcar #'cdr$ args))))
+
+
+                  
+  
                
 
 

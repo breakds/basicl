@@ -22,7 +22,10 @@
 (defpackage #:breakds.basicl.katana
   (:nicknames #:katana #:basicl.katana)
   (:use #:cl #:breakds.basicl.swiss-knife)
-  (:export #:force))
+  (:export #:force
+           #:car$
+           #:cdr$
+           #:mapcar$))
 
 ;;; --- Unit Test Packages
 
@@ -31,6 +34,15 @@
 	      #:basicl.swiss-knife-test)
   (:use #:cl #:stefil #:breakds.basicl.swiss-knife)
   (:export #:test-all
-	   #:list-test))
+	   #:list-test
+           #:macro-test
+           #:reader-macro-test))
+
+(defpackage #:breakds.basicl.katana-test
+  (:nicknames #:katana-test
+              #:breakds.basicl.katana-test)
+  (:use #:cl #:stefil #:breakds.basicl.katana)
+  (:export #:test-all
+           #:lazy-test))
 
 
