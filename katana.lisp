@@ -41,7 +41,7 @@
   (cdr (force x)))
 
 (defun mapcar$ (fun &rest args)
-  #1l(cons (apply fun (mapcar #'car$ args))
+  #1L(cons (apply fun (mapcar #'car$ args))
            (apply #'mapcar$ fun (mapcar #'cdr$ args))))
 
 

@@ -117,9 +117,12 @@ used to denote the lambda itself"
 
 (set-dispatch-macro-character
  #\# #\f (lambda (stream sub-char numarg)
-           (unless numarg (set numarg 0))
-           `(declare (optimize (safety ,numarg)
-                               (speed ,(- 3 numarg))))))
+           (declare (ignorable stream sub-char))
+           (setq numarg (or numarg 3))
+           (unless (<= numarg 3)
+             (error "bad value for #f: ~a" numarg))
+           `(declare (optimize (speed ,numarg)
+                               (safety ,(- 3 numarg))))))
            
                     
                    

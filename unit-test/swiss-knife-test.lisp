@@ -117,6 +117,14 @@
   (is (equal (funcall #2`(:a1 ,x1 :a2 ,x2)
                       15 'c)
              '(:a1 15 :a2 c))))
+
+(deftest optimize-reader-macro-test ()
+  (is (equal '#f '(declare (optimize (speed 3) (safety 0)))))
+  (is (equal '#1f '(declare (optimize (speed 1) (safety 2)))))
+  (is (equal '#2f '(declare (optimize (speed 2) (safety 1)))))
+  (is (equal '#3f '(declare (optimize (speed 3) (safety 0))))))
+
+         
     
   
 
