@@ -76,9 +76,10 @@
     (expected &rest args)
   (is (equal expected (apply #'symb args))))
 
-(deftest aif-test ()
+(deftest aif-awhen-test ()
   (is (null (aif (car nil) it)))
-  (is (eq (aif (car '(a b c)) it) 'a)))
+  (is (eq (aif (car '(a b c)) it) 'a))
+  (is (awhen (> 3 2) it)))
 
 ;; The counter-test defines a counter that can be toggled to count
 ;; upward/downward. The counter is built on top of alambda and alet
