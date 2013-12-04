@@ -18,7 +18,7 @@
 ;; lazy-object that supports memorization. Otherwise, it creates a
 ;; lazy-object that can be "forced" only once.
 (set-dispatch-macro-character
- #\# #\l (lambda (stream sub-char numarg)
+ #\# #\L (lambda (stream sub-char numarg)
            (declare (ignorable sub-char))
            (if (null numarg)
                `(lambda ()
