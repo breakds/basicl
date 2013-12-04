@@ -13,6 +13,7 @@
            #:mkstr
            #:symb
            #:aif
+           #:awhen
            #:it
            #:alambda
            #:self

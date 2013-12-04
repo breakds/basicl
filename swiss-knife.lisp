@@ -72,6 +72,14 @@ once and stored in a local variable called IT"
          ,then
          ,else)))
 
+(defmacro awhen (predicate &body body)
+  "equivalent to special form when, except that PREDICATE is evaluated
+once and stored in a local variable called IT"
+  `(let ((it ,predicate))
+     (when it
+       ,@body)))
+
+
 
 ;; one place that alambda is usually found useful is when you want to
 ;; define an anonymous recursive function.
@@ -106,6 +114,13 @@ used to denote the lambda itself"
                         collect (symb 'x i))
               ,(funcall (get-macro-character #\`)
                         stream nil))))
+
+(set-dispatch-macro-character
+ #\# #\f (lambda (stream sub-char numarg)
+           (unless numarg (set numarg 0))
+           `(declare (optimize (safety ,numarg)
+                               (speed ,(- 3 numarg))))))
+           
                     
                    
 
