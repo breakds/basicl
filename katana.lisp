@@ -17,23 +17,23 @@
 ;; argument that if provided with 1 (and only 1), the macro creates a
 ;; lazy-object that supports memorization. Otherwise, it creates a
 ;; lazy-object that can be "forced" only once.
-(set-dispatch-macro-character
- #\# #\L (lambda (stream sub-char numarg)
-           (declare (ignorable sub-char))
-           (if (null numarg)
-               `(lambda ()
-                  ,(read stream))
-               (if (= numarg 1)
-                   (with-gensyms (result)
-                     `(alet (,result)
-                        (lambda ()
-                          (setq ,result ,(read stream)
-                                this (lambda () ,result))
-                          ,result)))
-                   (error "Invalid number argument for #l (should be 1 or nil)")))))
+(eval-when (compile load eval)
+  (set-dispatch-macro-character
+   #\# #\L (lambda (stream sub-char numarg)
+             (declare (ignorable sub-char))
+             (if (null numarg)
+                 `(lambda ()
+                    ,(read stream))
+                 (if (= numarg 1)
+                     (with-gensyms (result)
+                       `(alet (,result)
+                              (lambda ()
+                                (setq ,result ,(read stream)
+                                      this (lambda () ,result))
+                                ,result)))
+                     (error "Invalid number argument for #l (should be 1 or nil)"))))))
 
 ;;;; ---- Lazy Sequence Shortcuts
-
 (defun car$ (x)
   (car (force x)))
 
