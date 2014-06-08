@@ -64,6 +64,10 @@ contain less than N elements."
   "convert arguments into a symbol"
   (values (intern (apply #'mkstr args))))
 
+(defun mk-keyword (&rest args)
+  "concatenate arguments and make the result a keyword"
+  (values (intern (apply #'mkstr args) "KEYWORD")))
+
 (defmacro aif (predicate then &optional else)
   "equivalent to special form if, except that PREDICATE is evaluated
 once and stored in a local variable called IT"

@@ -12,6 +12,7 @@
 	   #:with-gensyms
            #:mkstr
            #:symb
+	   #:mk-keyword
            #:aif
            #:awhen
            #:it
