@@ -51,7 +51,7 @@ contain less than N elements."
 
 (defmacro with-gensyms (var-list &body body)
   "bind (gensym) to the variables in VAR-LIST in BODY"
-  `(let ,(mapcar (lambda (x) `(,x (gensym)))
+  `(let ,(mapcar (lambda (x) `(,x (gensym (mkstr ,x "-"))))
 		 var-list)
      ,@body))
 
