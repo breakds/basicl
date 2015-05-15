@@ -55,10 +55,11 @@ contain less than N elements."
 		 var-list)
      ,@body))
 
-(defun mkstr (&rest args)
-  "concatenate arguments into a string"
-  (with-output-to-string (s)
-    (dolist (a args) (princ a s))))
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defun mkstr (&rest args)
+    "concatenate arguments into a string"
+    (with-output-to-string (s)
+      (dolist (a args) (princ a s)))))
 
 (defun symb (&rest args)
   "convert arguments into a symbol"
